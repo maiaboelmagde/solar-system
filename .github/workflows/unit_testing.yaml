@@ -32,3 +32,29 @@ jobs:
 
       - name: unit testing
         run: npm test
+
+
+  code-coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4.0.0
+        with:
+          node-version: 20
+
+      - name: install npm
+        run: npm install
+
+      - name: unit testing
+        run: npm run coverage
+
+      - uses: actions/upload-artifact@v4
+        if: failure() || success()
+        with:
+          name: code-coverage-result
+          path: coverage
+          retention-days: 5
+
