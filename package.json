@@ -23,6 +23,6 @@
   "devDependencies": {
     "chai": "*",
     "chai-http": "*",
-    "mocha": "*"
+    "mocha": "^11.5.0"
   }
 }
